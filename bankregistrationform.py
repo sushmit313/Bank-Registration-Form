@@ -15,7 +15,7 @@ class BankRegistrationForm:
         self.phone = tk.StringVar()
         self.address = tk.StringVar()
         self.country = tk.StringVar()
-        self.checkbox = tk.BooleanVar()
+        self.checkbox_var = tk.BooleanVar()
 
         # GUI components
         self.label_first_name = tk.Label(zedy, text="First Name :")
@@ -42,7 +42,7 @@ class BankRegistrationForm:
         self.label_country = tk.Label(zedy, text="Country :")
         self.entry_country = tk.Entry(zedy, textvariable=self.country)
 
-        self.checkbox = tk.Checkbutton(zedy, text="I agree to the terms and conditions", variable=self.checkbox)
+        self.checkbox = tk.Checkbutton(zedy, text="I agree to the terms and conditions", variable=self.checkbox_var)
 
         self.submit_button = tk.Button(zedy, text="Submit", command=self.submit_form)
 
@@ -88,16 +88,16 @@ class BankRegistrationForm:
             messagebox.showerror("Error", "Passwords do not match")
             return
 
-        if not self.checkbox.get():
+        if not self.checkbox_var.get():
             messagebox.showerror("Error", "Please agree to the terms and conditions")
             return
 
-        # If all validation passes, show a success message (you can implement further actions here)
+        
         messagebox.showinfo("Success", "Registration Successful!")
 
-# Create the main Tkinter window
+
 zedy = tk.Tk()
 app = BankRegistrationForm(zedy)
 
-# Run the Tkinter event loop
+
 zedy.mainloop()
